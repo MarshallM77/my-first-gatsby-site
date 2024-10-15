@@ -13,6 +13,14 @@ module.exports = {
         path: `${__dirname}/blog`,
       }
     },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "RecipeAPI",
+        fieldName: "recipeAPI",
+        url: `https://csc496f24demo.tldr.dev/graphql`,
+      },
+    }, 
     "gatsby-plugin-mdx",
     "gatsby-transformer-sharp",
   ],
