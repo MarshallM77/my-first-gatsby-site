@@ -3,6 +3,7 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const recipeTemplate = path.resolve('src/templates/recipe.js');
+  const articleTemplate = path.resolve('src/templates/article.js');
 
   const result = await graphql(`
     {
@@ -10,14 +11,18 @@ exports.createPages = async ({ graphql, actions }) => {
         nodeRecipes(first: 100) {
           edges {
             node {
-            id
-            path
-            title
-            cookingTime
-            difficulty
-            ingredients
-            numberOfServings
-            preparationTime
+              id
+              path
+              title
+            }
+          }
+        }
+        nodeArticles(first: 100) {
+          edges {
+            node {
+              id
+              path
+              title
             }
           }
         }
@@ -31,12 +36,22 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const recipes = result.data.recipeAPI.nodeRecipes.edges;
+  const articles = result.data.recipeAPI.nodeArticles.edges;
 
-  // Create a page for each recipe
   recipes.forEach(({ node }) => {
     createPage({
-      path: `/recipe/${node.id}`, // Change this to your desired path
+      path: `/en/recipes/${node.title.toLowerCase().replace(/\s+/g, '-')}`,
       component: recipeTemplate,
+      context: {
+        id: node.id,
+      },
+    });
+  });
+
+  articles.forEach(({ node }) => {
+    createPage({
+      path: `/en/articles/${node.title.toLowerCase().replace(/\s+/g, '-')}`,
+      component: articleTemplate,
       context: {
         id: node.id,
       },
