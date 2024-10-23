@@ -38,7 +38,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           ssh -o StrictHostKeyChecking=no student05@student05.wendell.tech << 'EOF'
-          cd /site
+          cd site
           docker compose down
           docker compose up -d --build
           EOF
