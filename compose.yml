@@ -1,0 +1,25 @@
+---
+version: '3'
+name: student05
+services:
+	web:
+		image: webdevops/php-apache:8.1
+		container_name: student05_web
+		environment:
+			WEB_DOCUMENT_ROOT: /app
+			php.memory_limit: 512M
+			PHP_MAX_EXECUTION_TIME: 450
+			LETSENCRYPT_EMAIL: w@wwbtc.com
+			LETSENCRYPT_HOST: student05.wendell.tech
+			VIRTUAL_HOST: student05.wendell.tech
+		restart: always
+		volumes:
+			- ./html:/app
+			
+		network_mode: bridge
+#		ports:
+#			- "3306:3306"
+networks:
+	network1:
+		external:
+			name:default
