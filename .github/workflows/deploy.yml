@@ -24,7 +24,7 @@ jobs:
       - name: Build Gatsby site
         run: npm run build
 
-      - name: Deploy Gatsby build to SSH server
+      - name: Deploy build to SSH server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
