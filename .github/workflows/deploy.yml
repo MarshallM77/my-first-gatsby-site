@@ -24,7 +24,7 @@ jobs:
       - name: Build Gatsby site
         run: npm run build
 
-      - name: Deploy to SSH server
+        - name: Deploy Gatsby build to SSH server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
@@ -32,3 +32,13 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./public/ student05@student05.wendell.tech:site/html/
+
+      - name: Run Docker Compose on SSH server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          ssh -o StrictHostKeyChecking=no student05@student05.wendell.tech << 'EOF'
+          cd /site
+          docker-compose down
+          docker-compose up -d --build
+          EOF
