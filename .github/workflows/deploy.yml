@@ -39,6 +39,6 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no student05@student05.wendell.tech << 'EOF'
           cd /site
-          docker-compose down
-          docker-compose up -d --build
+          docker compose down
+          docker compose up -d --build
           EOF
