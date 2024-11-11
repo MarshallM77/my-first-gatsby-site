@@ -1,49 +1,67 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal Starter
-</h1>
+# My First Gatsby Site
 
-## 🚀 Quick start
+This is a gatsby site I have developed for my Senior Seminar class for Eastern Kentucky University. Using Docker, Gatsby, and Node.js a site was created which dynamically adds blogposts and draws dynamically from a Recipe and Article API.
 
-1.  **Create a Gatsby site.**
+## Table of Contents
+1. [Getting Started](#getting-started)
+2. [Features](#features)
+3. [Technologies and Tools](#technologies-and-tools)
+4. [Usage](#usage)
+5. [Testing](#testing)
+6. [Deployment](#deployment)
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## Getting Started
+To set up the project locally, follow these steps:
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/MarshallM77/my-first-gatsby-site.git
+   ```
 
-2.  **Start developing.**
+2. **Navigate to the project directory**:
+   ```bash
+   cd my-first-gatsby-site
+   ```
 
-    Navigate into your new site’s directory and start it up.
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+4. **Start the development server**:
+   ```bash
+   gatsby develop
+   ```
 
-3.  **Open the code and start customizing!**
+## Features
+- Dynamic recipe/article content pulled from GraphQL
+- SEO optimization with reusable `Seo` component
+- Docker-based deployment strategy with atomic site replacement
+- Dynamic blog posting using .mdx
 
-    Your site is now running at http://localhost:8000!
+## Technologies and Tools
+- **Gatsby** - Static site generator
+- **GraphQL** - Data fetching
+- **Docker** - Containerization
+- **GitHub Actions** - CI/CD for automated deployment
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+## Usage
+The project allows you to add blog posts dynamically by adding a directory in the /blog directory.
 
-4.  **Learn more**
+## Testing
+This project includes specific tests for key components. Run tests with the following command:
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+```bash
+npm test
+```
 
-## 🚀 Quick start (Netlify)
+### Test Coverage
+- **Seo component** for page titles
+- **Mock data** for recipe ingredients
+- **Collection testing** for articles
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+## Deployment
+This project uses a GitHub Actions workflow to automate deployment. It checks if Docker is running on the server and uses an atomic deployment process.
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+1. **Push** changes to the main branch.
+2. The GitHub Action handles the build and deployment to `student05.wendell.tech`.
